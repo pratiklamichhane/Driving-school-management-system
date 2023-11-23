@@ -1,0 +1,104 @@
+{% extends "management/base.html" %}
+{% block Title %}Dashboard{% endblock Title %}
+
+
+{% block body %}
+{% comment %} dashboard Titles{% endcomment %}
+<div class="stats-cards d-flex flex-wrap justify-content-between m-4">
+
+    {% comment %} stats section {% endcomment %}
+    <div class="stats-container d-flex flex-wrap align-items-center ">
+<div class="card text-white bg-primary m-3" style="max-width: 20rem;" bis_skin_checked="1">
+    <div class="card-header" bis_skin_checked="1">Total Learners</div>
+    <div class="card-body" bis_skin_checked="1">
+      <h4 class="card-title">840 <i class="ri-user-line"></i></h4>
+      <p class="card-text">Total Learners enrolled.</p>
+    </div>
+  </div>
+  <div class="card text-white bg-info m-3 " style="max-width: 20rem;" bis_skin_checked="1">
+    <div class="card-header" bis_skin_checked="1">Active Learners</div>
+    <div class="card-body" bis_skin_checked="1">
+      <h4 class="card-title">55 <i class="ri-user-line"></i> </h4>
+      <p class="card-text">Current active learners.</p>
+    </div>
+  </div>
+
+  <div class="card text-white bg-success m-3" style="max-width: 20rem;" bis_skin_checked="1">
+    <div class="card-header" bis_skin_checked="1">Total Staffs</div>
+    <div class="card-body" bis_skin_checked="1">
+      <h4 class="card-title">20 <i class="ri-user-line"></i></h4>
+      <p class="card-text">Total staffs available.</p>
+    </div>
+  </div>
+</div>
+{% comment %} stats section ends  
+notifications center starts {% endcomment %}
+  <div class="m-4">
+  <h4>Notifications <i class="ri-notification-line"></i></h4>
+  <div class="alert alert-dismissible alert-info" bis_skin_checked="1">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Hurray!</strong> We added a <a href="#" class="alert-link">New feature</a>, Check it out!
+  </div>
+  <div class="alert alert-dismissible alert-danger" bis_skin_checked="1">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Opps!</strong> <a href="#" class="alert-link">Your trial is ending </a>on 3 days renew now!.
+  </div>
+</div>
+{% comment %} notifications center ends {% endcomment %}
+</div>
+{% comment %} dashboard titles ends {% endcomment %}
+
+{% comment %} student dashboard starts {% endcomment %}
+
+<div class="container-fluid">
+  <h4><i class="ri-list-check mt-0 mb-0 m-3"></i> Learners List</h4>
+  <div class="row">
+    <div class="col-12">
+      {% if students %}
+      <div class="card text-white bg-primary m-3" bis_skin_checked="1">
+        <div class="card-header" bis_skin_checked="1"><i class="ri-user-fill"></i> LEARNERS RECORD</div>
+        <div class="card-body" bis_skin_checked="1">
+          <p class="card-text">
+            <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr class="table-primary">
+                  <th scope="col">ID</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Date Enrolled</th>
+                  <th scope="col">Phone Number</th>
+                  <th scope="col">Time Slot</th>
+                  <th scope="col">Vechile Type</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+             {% for student in students %}
+             <tr>
+              <td>{{ student.id }}</td>
+              <td>{{ student.student_name }}</td>
+              <td>{{ student.date_enrolled }}</td>
+              <td>{{ student.phone_number }}</td>
+              <td>{{ student.time_slot }}</td>
+              <td>{{ student.vehicle_type }}</td>
+              <td><button type="button" class="btn btn-primary"><i class="ri-eye-line"></i></button>
+              </td>
+             </tr>
+             {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          </p>
+        </div>
+      {% else %}
+      <div class="alert alert-dismissible alert-warning m-4" bis_skin_checked="1" >
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <h4 class="alert-heading">Opps!</h4>
+        <p class="mb-0">Looks like, You haven't added a <strong>Student</strong> yet. Please add the student and refresh this page. <a href="#" class="alert-link">Add a student</a>.</p>
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock body %}
