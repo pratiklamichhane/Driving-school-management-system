@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render 
+from django.shortcuts import render , get_object_or_404
 from django.urls import reverse
 from .models import Student , Staffs
 from django.db.models import Count
@@ -11,6 +11,7 @@ def index(request):
         'total_students' : Student.objects.count(),
         'active_students_count' : Student.objects.filter(enrollment_status='ACTIVE').count(),
         'unpaid_invoices' : Student.objects.filter(payment_status='UNPAID').count(),
+        'total_staffs' : Staffs.objects.count()
     })
 
 def view_student(request , id):
@@ -36,3 +37,10 @@ def staffs(request):
 def view_staff(request , id):
     student = Staffs.objects.get(pk=id)
     return HttpResponseRedirect(reverse('index'))
+
+def students_assigned_to_staff(request, staff_id):
+    staff = get_object_or_404(Staffs, pk=staff_id)
+
+    return render(request, 'management/staff_students.html', {
+        'staff': staff
+    })

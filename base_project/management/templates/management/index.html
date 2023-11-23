@@ -18,7 +18,7 @@
   <div class="card text-white bg-info m-3 " style="max-width: 20rem;" bis_skin_checked="1">
     <div class="card-header" bis_skin_checked="1">Active Learners</div>
     <div class="card-body" bis_skin_checked="1">
-      <h4 class="card-title">{{active_students_count}} <i class="ri-user-line"></i> </h4>
+      <h4 class="card-title">{{active_students_count}} <i class="ri-user-fill"></i> </h4>
       <p class="card-text">Current active learners.</p>
     </div>
   </div>
@@ -26,7 +26,7 @@
   <div class="card text-white bg-success m-3" style="max-width: 20rem;" bis_skin_checked="1">
     <div class="card-header" bis_skin_checked="1">Total Staffs</div>
     <div class="card-body" bis_skin_checked="1">
-      <h4 class="card-title">20 <i class="ri-user-line"></i></h4>
+      <h4 class="card-title">{{total_staffs}} <i class="ri-user-follow-fill"></i></h4>
       <p class="card-text">Available staffs.</p>
     </div>
   </div>
@@ -120,7 +120,7 @@ notifications center starts {% endcomment %}
                         <p><i class="ri-pass-valid-fill"></i> Enrollment Status : <strong>{{student.enrollment_status}}</strong></p>
                         <p><i class="ri-wallet-2-line"></i> Payment Status: <strong>{{student.payment_status}}</strong></p>
                         <p><i class="ri-money-dollar-box-line"></i> Final Amount: <strong>{{student.final_amount}}</strong></p>
-                        <p><i class="ri-map-pin-user-line"></i> Staff Assigned: <strong>Ram Shrestha</strong></p>
+                        <p><i class="ri-map-pin-user-line"></i> Staff Assigned: <strong>{{student.staff_assigned}}</strong></p>
                       </div>
                       <div class="modal-footer" bis_skin_checked="1">
                         <button type="button" class="btn btn-warning"><i class="ri-edit-box-line"></i> Edit Student</button>
