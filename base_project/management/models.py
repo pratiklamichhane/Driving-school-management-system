@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Count
 
 # Create your models here.
 TUTOR_TYPE = (
@@ -14,6 +15,14 @@ class Staffs(models.Model):
     tutor_type = models.CharField(max_length=50,
                   choices= TUTOR_TYPE,
                   default="BIKE/SCOOTER")
+    def get_active_students_count(self):
+        return self.students_assigned.filter(
+            enrollment_status='ACTIVE'
+        ).count()
+
+    def get_total_students_count(self):
+        return self.students_assigned.count()
+
     def __str__(self):
         return  f'{self.staff_name}'
     

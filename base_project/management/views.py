@@ -2,6 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render 
 from django.urls import reverse
 from .models import Student , Staffs
+from django.db.models import Count
+
 # Create your views here.
 def index(request):
     return render(request , 'management/index.html' , {
@@ -16,8 +18,19 @@ def view_student(request , id):
     return HttpResponseRedirect(reverse('index'))
 
 def staffs(request):
-    return render(request , 'management/staffs.html',{
-        'staffs' : Staffs.objects.all()
+    staff_members = Staffs.objects.all()
+
+    for staff in staff_members:
+        active_students_count = staff.students_assigned.filter(
+            enrollment_status='ACTIVE'
+        ).count()
+
+        total_students_count = staff.students_assigned.count()
+        staff.active_students_count = active_students_count
+        staff.total_students_count = total_students_count
+
+    return render(request, 'management/staffs.html', {
+        'staffs': staff_members
     })
 
 def view_staff(request , id):

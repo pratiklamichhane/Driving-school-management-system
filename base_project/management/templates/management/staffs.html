@@ -39,8 +39,8 @@
                 <td>{{ staff.staff_name }}</td>
                 <td>{{ staff.phone_number }}</td>
                 <td>{{ staff.tutor_type }}</td>
-                <td>12</td>
-                <td>120</td>
+                <td>{{staff.active_students_count}}</td>
+                <td>{{staff.total_students_count}}</td>
                 <td><a type="button" class="btn btn-primary" href="{% url 'view_staff' staff.staff_id%}" data-bs-toggle="modal" data-bs-target="#mymodal{{staff.staff_id}}"
                   ><i class="ri-eye-line"></i></a>
                   {% comment %} modal view staff {% endcomment %}
@@ -58,8 +58,8 @@
                           <p><i class="ri-user-3-line"></i> Full Name : <strong>{{staff.staff_name}}</strong></p>
                           <p><i class="ri-phone-line"></i> Phone No : <strong>{{staff.phone_number}}</strong></p>
                           <p><i class="ri-car-line"></i> Tutor Type : <strong>{{staff.tutor_type}}</strong></p>
-                          <p><i class="ri-map-pin-user-line"></i> Active Students: <strong>12</strong></p>
-                          <p><i class="ri-map-pin-user-line"></i> Total Students: <strong>12</strong></p>
+                          <p><i class="ri-map-pin-user-line"></i> Active Students: <strong>{{staff.active_students_count}}</strong></p>
+                          <p><i class="ri-map-pin-user-line"></i> Total Students: <strong>{{staff.total_students_count}}</strong></p>
                         </div>
                         <div class="modal-footer" bis_skin_checked="1">
                           <button type="button" class="btn btn-danger"><i class="ri-edit-box-line"></i> Edit Staff</button>
