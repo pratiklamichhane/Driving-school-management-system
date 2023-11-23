@@ -1,6 +1,23 @@
 from django.db import models
 
 # Create your models here.
+TUTOR_TYPE = (
+    ("BIKE/SCOOTER", "bike/scooter"),
+    ("CAR", "car"),
+    ("ALL", "all"),
+    ("OTHER", "other"),
+)
+class Staffs(models.Model):
+    staff_id = models.AutoField (primary_key=True)
+    staff_name = models.CharField(max_length=100)
+    phone_number = models.IntegerField()
+    tutor_type = models.CharField(max_length=50,
+                  choices= TUTOR_TYPE,
+                  default="BIKE/SCOOTER")
+    def __str__(self):
+        return  f'{self.staff_name}'
+    
+    
 VECHILE_CHOICES = (
     ("BIKE", "bike"),
     ("SCOOTER", "scooter"),
@@ -34,5 +51,14 @@ class Student(models.Model):
                   default="UNPAID")
     final_amount = models.PositiveIntegerField()
 
+    staff_assigned = models.ForeignKey(
+        Staffs,
+        on_delete=models.SET_NULL,
+        blank = True,
+        null = True,
+        related_name='students_assigned'
+    )
+
     def __str__(self):
-        return f'Student: {self.student_name}'
+        return f'{self.student_name}'
+    

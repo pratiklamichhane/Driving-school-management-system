@@ -81,6 +81,7 @@ notifications center starts {% endcomment %}
                   <th scope="col">Phone Number</th>
                   <th scope="col">Time Slot</th>
                   <th scope="col">Vechile Type</th>
+                  <th scope="col">Staff Assigned</th>
                   <th scope="col">Enrollment</th>
                   <th scope="col">Payment</th>
                   <th scope="col">Actions</th>
@@ -94,6 +95,7 @@ notifications center starts {% endcomment %}
               <td>{{ student.phone_number }}</td>
               <td>{{ student.time_slot }}</td>
               <td>{{ student.vehicle_type }}</td>
+              <td>{{ student.staff_assigned }}</td>
               <td>{{ student.enrollment_status}}</td>
               <td>{{ student.payment_status}}</td>
               <td><a type="button" class="btn btn-primary" href="{% url 'view_student' student.id%}" data-bs-toggle="modal" data-bs-target="#mymodal{{student.id}}"
@@ -121,7 +123,7 @@ notifications center starts {% endcomment %}
                         <p><i class="ri-map-pin-user-line"></i> Staff Assigned: <strong>Ram Shrestha</strong></p>
                       </div>
                       <div class="modal-footer" bis_skin_checked="1">
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-warning"><i class="ri-edit-box-line"></i> Edit Student</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                       </div>
                     </div>
