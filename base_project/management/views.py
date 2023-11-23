@@ -1,4 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render 
+from django.urls import reverse
 from .models import Student
 # Create your views here.
 def index(request):
@@ -8,3 +10,6 @@ def index(request):
         'active_students_count' : Student.objects.filter(enrollment_status='ACTIVE').count(),
         'unpaid_invoices' : Student.objects.filter(payment_status='UNPAID').count(),
     })
+
+def view_student(request , id):
+    return 
