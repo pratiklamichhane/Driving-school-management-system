@@ -11,14 +11,14 @@
 <div class="card text-white bg-primary m-3" style="max-width: 20rem;" bis_skin_checked="1">
     <div class="card-header" bis_skin_checked="1">Total Learners</div>
     <div class="card-body" bis_skin_checked="1">
-      <h4 class="card-title">840 <i class="ri-user-line"></i></h4>
+      <h4 class="card-title">{{total_students}} <i class="ri-user-line"></i></h4>
       <p class="card-text">Total Learners enrolled.</p>
     </div>
   </div>
   <div class="card text-white bg-info m-3 " style="max-width: 20rem;" bis_skin_checked="1">
     <div class="card-header" bis_skin_checked="1">Active Learners</div>
     <div class="card-body" bis_skin_checked="1">
-      <h4 class="card-title">55 <i class="ri-user-line"></i> </h4>
+      <h4 class="card-title">{{active_students_count}} <i class="ri-user-line"></i> </h4>
       <p class="card-text">Current active learners.</p>
     </div>
   </div>
@@ -27,7 +27,14 @@
     <div class="card-header" bis_skin_checked="1">Total Staffs</div>
     <div class="card-body" bis_skin_checked="1">
       <h4 class="card-title">20 <i class="ri-user-line"></i></h4>
-      <p class="card-text">Total staffs available.</p>
+      <p class="card-text">Available staffs.</p>
+    </div>
+  </div>
+  <div class="card text-white bg-danger m-3" style="max-width: 20rem;" bis_skin_checked="1">
+    <div class="card-header" bis_skin_checked="1">Unpaid Invoices</div>
+    <div class="card-body" bis_skin_checked="1">
+      <h4 class="card-title">{{unpaid_invoices}} <i class="ri-bill-line"></i></h4>
+      <p class="card-text">Unpaid</p>
     </div>
   </div>
 </div>
@@ -69,6 +76,8 @@ notifications center starts {% endcomment %}
                   <th scope="col">Phone Number</th>
                   <th scope="col">Time Slot</th>
                   <th scope="col">Vechile Type</th>
+                  <th scope="col">Enrollment</th>
+                  <th scope="col">Payment</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -80,6 +89,8 @@ notifications center starts {% endcomment %}
               <td>{{ student.phone_number }}</td>
               <td>{{ student.time_slot }}</td>
               <td>{{ student.vehicle_type }}</td>
+              <td>{{ student.enrollment_status}}</td>
+              <td>{{ student.payment_status}}</td>
               <td><button type="button" class="btn btn-primary"><i class="ri-eye-line"></i></button>
               </td>
              </tr>
