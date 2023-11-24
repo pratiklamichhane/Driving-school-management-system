@@ -1,0 +1,28 @@
+{% extends "management/base.html" %}
+{% block Title %}Add Staff{% endblock Title %}
+{% block body %}
+<h3 class="text-center m-4">Add New Staff</h3>
+{% if success %}
+<div class="alert alert-dismissible alert-success m-5" bis_skin_checked="1">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong>Staff Added Sucessfully <a href="{% url "addstaff" %}" class="alert-link"> Add new Staff </a>.
+  </div>
+  <a class="btn btn-primary m-5" href="{% url "index" %}">Go to Dashboard</a>
+{% else %}
+<div class="row justify-content-center">
+    <div class="col-6 mx-auto"> 
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header"><i class="ri-pass-valid-line"></i> Staff Registration</div>
+            <div class="card-body">
+                <form action="{% url 'addstaff' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success">Add Staff</button>
+                    <a href="{% url 'index' %}" class="btn btn-danger">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock body %}
