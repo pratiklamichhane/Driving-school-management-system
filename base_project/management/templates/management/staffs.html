@@ -74,7 +74,7 @@
                {% endfor %}
                 </tbody>
               </table>
-              <a class="btn btn-success" href="#">Add new staff</a>
+              <a class="btn btn-success" href="{% url "addstaff" %}">Add new staff</a>
             </div>
             </p>
           </div>
@@ -82,7 +82,7 @@
         <div class="alert alert-dismissible alert-danger m-4" bis_skin_checked="1" >
           <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
           <h4 class="alert-heading">Opps!</h4>
-          <p class="mb-0">Looks like, You haven't added a <strong>Staffs</strong> yet. Please add the Staff and refresh this page. <a href="#" class="alert-link">Add a Staff</a>.</p>
+          <p class="mb-0">Looks like, You haven't added a <strong>Staffs</strong> yet. Please add the Staff and refresh this page. <a href="{% url "addstaff" %}" class="alert-link">Add a Staff</a>.</p>
         {% endif %}
         </div>
       </div>
