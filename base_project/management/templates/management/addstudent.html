@@ -1,0 +1,28 @@
+{% extends "management/base.html" %}
+{% block Title %}Add Student{% endblock Title %}
+{% block body %}
+<h3 class="text-center m-4">Add New Student</h3>
+{% if success %}
+<div class="alert alert-dismissible alert-success m-5" bis_skin_checked="1">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>Well done!</strong>Student Added Sucessfully <a href="{% url "addstudent" %}" class="alert-link"> Add new student </a>.
+  </div>
+  <a class="btn btn-primary m-5" href="{% url "index" %}">Go to Dashboard</a>
+{% else %}
+<div class="row justify-content-center">
+    <div class="col-6 mx-auto"> <!-- Applied 'mx-auto' class here -->
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header"><i class="ri-pass-valid-line"></i> Student Registration</div>
+            <div class="card-body">
+                <form action="{% url 'addstudent' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success">Add Student</button>
+                    <a href="{% url 'index' %}" class="btn btn-danger">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock body %}

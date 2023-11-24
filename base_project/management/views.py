@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render , get_object_or_404
 from django.urls import reverse
 from .models import Student , Staffs
+from .forms import StudentForm
 from django.db.models import Count
 
 # Create your views here.
@@ -43,4 +44,39 @@ def students_assigned_to_staff(request, staff_id):
 
     return render(request, 'management/staff_students.html', {
         'staff': staff
+    })
+
+def addStudent(request):
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            new_student_name = form.cleaned_data['student_name']
+            new_phone_number = form.cleaned_data['phone_number']
+            new_date_enrolled = form.cleaned_data['date_enrolled']
+            new_time_slot = form.cleaned_data['time_slot']
+            new_vehicle_type = form.cleaned_data['vehicle_type']
+            new_enrollment_status = form.cleaned_data['enrollment_status']
+            new_final_amount = form.cleaned_data['final_amount']
+            new_staff_assigned = form.cleaned_data['staff_assigned']
+        
+        new_student = Student(
+            student_name = new_student_name,
+            phone_number = new_phone_number,
+            date_enrolled = new_date_enrolled,
+            time_slot = new_time_slot,
+            vehicle_type = new_vehicle_type,
+            enrollment_status = new_enrollment_status,
+            final_amount = new_final_amount,
+            staff_assigned = new_staff_assigned,
+        )
+
+        new_student.save()
+        return render(request, 'management/addstudent.html',{
+            'form' : StudentForm(),
+            'success': True,
+        })
+    else:
+        form = StudentForm()
+    return render(request , 'management/addstudent.html',{
+        'form' : StudentForm()
     })
