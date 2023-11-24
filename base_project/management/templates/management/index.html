@@ -100,6 +100,7 @@ notifications center starts {% endcomment %}
               <td>{{ student.payment_status}}</td>
               <td><a type="button" class="btn btn-primary" href="{% url 'view_student' student.id%}" data-bs-toggle="modal" data-bs-target="#mymodal{{student.id}}"
                 ><i class="ri-eye-line"></i></a>
+              <a href="{% url "editstudent" student.id %}" class="btn btn-secondary"><i class="ri-edit-box-line"></i></a>
                 {% comment %} modal view student {% endcomment %}
                 <div class="modal" bis_skin_checked="1" id="mymodal{{student.id}}" tabindex="-1" aria-labelledby="mymodellabel1" aria-hidden="true" >
                   <div class="modal-dialog" role="document" bis_skin_checked="1">
@@ -123,7 +124,7 @@ notifications center starts {% endcomment %}
                         <p><i class="ri-map-pin-user-line"></i> Staff Assigned: <strong>{{student.staff_assigned}}</strong></p>
                       </div>
                       <div class="modal-footer" bis_skin_checked="1">
-                        <button type="button" class="btn btn-warning"><i class="ri-edit-box-line"></i> Edit Student</button>
+                        <a href="{% url "editstudent" student.id %}"type="button" class="btn btn-warning"><i class="ri-edit-box-line"></i> Edit Student</a>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                       </div>
                     </div>

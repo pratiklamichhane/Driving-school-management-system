@@ -62,7 +62,7 @@
                           <p><i class="ri-map-pin-user-line"></i> Total Students: <strong>{{staff.total_students_count}}</strong></p>
                         </div>
                         <div class="modal-footer" bis_skin_checked="1">
-                          <button type="button" class="btn btn-danger"><i class="ri-edit-box-line"></i> Edit Staff</button>
+                          <a type="button" class="btn btn-danger"  href="{% url "editstaff" staff.staff_id%}"><i class="ri-edit-box-line"></i> Edit Staff</a>
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                       </div>

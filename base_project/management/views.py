@@ -106,3 +106,44 @@ def addStaff(request):
     return render(request, 'management/addstaff.html', {
         'form': StaffForm()
     })
+
+def editStudent(request , id):
+    if request.method == "POST":
+        student = Student.objects.get(pk=id)
+        form = StudentForm(request.POST , instance=student)
+        if form.is_valid():
+            form.save()
+            return render(request, 'management/editstudent.html',{
+                'form': form,
+                'success' : True,
+            })
+    else:
+        student = Student.objects.get(pk=id)
+        form = StudentForm(instance=student)
+    return render(request, 'management/editstudent.html',{
+        'form': form
+    })
+
+def editStaff(request , id):
+    if request.method=="POST":
+        staff = Staffs.objects.get(pk=id)
+        form = StaffForm(request.POST, instance=staff)
+        if form.is_valid():
+            form.save()
+            return render(request , 'management/editstaff.html',{
+                'form' : form,
+                'success' : True,
+            })
+    
+    else:
+        staff = Staffs.objects.get(pk = id)
+        form = StaffForm(instance=staff)
+    return render(request , 'management/editstaff.html',{
+        'form':form
+    })
+
+def deleteStudent(request , id):
+    if request.method == "POST":
+        student = Student.objects.get(pk=id)
+        student.delete()
+    return HttpResponseRedirect(reverse('index'))
