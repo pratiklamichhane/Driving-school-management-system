@@ -116,13 +116,21 @@ def editStudent(request , id):
             return render(request, 'management/editstudent.html',{
                 'form': form,
                 'success' : True,
+                'student' : student,
             })
     else:
         student = Student.objects.get(pk=id)
         form = StudentForm(instance=student)
     return render(request, 'management/editstudent.html',{
-        'form': form
+        'form': form,
+        'student' : student,
     })
+
+def deleteStudent(request, id):
+    if request.method == "POST":
+        student = get_object_or_404(Student, pk=id)
+        student.delete()
+    return HttpResponseRedirect(reverse('index'))
 
 def editStaff(request , id):
     if request.method=="POST":
@@ -133,17 +141,18 @@ def editStaff(request , id):
             return render(request , 'management/editstaff.html',{
                 'form' : form,
                 'success' : True,
+                'staff' : staff,
             })
     
     else:
         staff = Staffs.objects.get(pk = id)
         form = StaffForm(instance=staff)
     return render(request , 'management/editstaff.html',{
-        'form':form
+        'form':form,
+        'staff': staff,
     })
-
-def deleteStudent(request , id):
+def deleteStaff(request, id):
     if request.method == "POST":
-        student = Student.objects.get(pk=id)
-        student.delete()
+        staff = get_object_or_404(Staffs , pk=id)
+        staff.delete()
     return HttpResponseRedirect(reverse('index'))

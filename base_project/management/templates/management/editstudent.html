@@ -17,12 +17,35 @@
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-success">Update Student</button>
-                    <a href="{% url 'index' %}" class="btn btn-warning">Cancel</a>
-                    <a href="{% url 'index' %}" class="btn btn-danger float-end">Delete Student</a>
+                    <a href="{% url 'index' %}" class="btn btn-warning">Cancel</a>            
                 </form>
-            </div>
+                <button class="btn btn-danger float-end" type="button" data-bs-toggle="modal" data-bs-target="#delete{{student.id}}">Delete Student</button> 
         </div>
     </div>
 </div>
+
+<div class="modal" id="delete{{student.id}}" bis_skin_checked="1">
+    <div class="modal-dialog" role="document" bis_skin_checked="1">
+      <div class="modal-content" bis_skin_checked="1">
+        <div class="modal-header" bis_skin_checked="1">
+          <h5 class="modal-title">Delete Student : {{student.student_name}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body" bis_skin_checked="1">
+          <p>Are you sure you want to delete student <strong> {{student.student_name}} </strong>?</p>
+        </div>
+        <div class="modal-footer" bis_skin_checked="1">
+          <form action="{% url "deletestudent" student.id%}" method="POST">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Delete">
+          </form>
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>          
 {% endif %}
 {% endblock body %}

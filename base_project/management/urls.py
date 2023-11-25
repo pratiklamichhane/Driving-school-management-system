@@ -10,5 +10,6 @@ urlpatterns = [
     path('addstaff/', views.addStaff , name="addstaff"),
     path('editstudent/<int:id>/', views.editStudent , name="editstudent"),
     path('editstaff/<int:id>/', views.editStaff , name="editstaff"),
-    path('deletestudent/<int:id>', views.deleteStudent , name="deletestudent")
+    path('deletestudent/<int:id>', views.deleteStudent , name="deletestudent"),
+    path('deletestaff/<int:id>', views.deleteStaff , name="deletestaff")
     ]
